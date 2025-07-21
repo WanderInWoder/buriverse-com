@@ -6,7 +6,8 @@ import CosmicParticles from "@/components/CosmicParticles";
 import FloatingElements from "@/components/FloatingElements";
 import PythonSimulator from "@/components/PythonSimulator";
 import MemoryGalaxy from "@/components/MemoryGalaxy";
-import InteractiveGames from "@/components/InteractiveGames";
+import CheckmateMoments from "@/components/CheckmateMoments";
+import EnhancedGames from "@/components/EnhancedGames";
 import SongGenerator from "@/components/SongGenerator";
 import { useToast } from "@/hooks/use-toast";
 
@@ -79,16 +80,16 @@ const Index = () => {
             BURIVERSE
           </h1>
           
-          <p className="text-xl md:text-2xl font-space mb-8 text-accent">
-            This is your universe. Built from our memories, jokes, snowball fights, and ❤️
+          <p className="text-xl md:text-2xl font-space mb-8 text-accent animate-fade-in">
+            Where snowflakes carry emotions, and stars hold our jokes.
           </p>
           
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button className="cosmic-glow font-orbitron" size="lg">
-              🚀 Enter the Universe
+            <Button className="cosmic-glow font-orbitron hover-scale transition-all duration-300 hover:shadow-glow" size="lg">
+              🚀 Explore BURIVERSE
             </Button>
-            <Button variant="outline" className="aurora-border font-orbitron" size="lg">
-              🎵 Start Your Journey
+            <Button variant="outline" className="aurora-border font-orbitron hover-scale transition-all duration-300" size="lg">
+              🎵 Play the Mashup
             </Button>
           </div>
         </div>
@@ -154,8 +155,11 @@ const Index = () => {
       {/* Memory Galaxy */}
       <MemoryGalaxy />
 
-      {/* Interactive Games */}
-      <InteractiveGames />
+      {/* Checkmate Moments */}
+      <CheckmateMoments />
+
+      {/* Enhanced Interactive Games */}
+      <EnhancedGames />
 
       {/* Footer */}
       <footer className="py-12 px-6 text-center">

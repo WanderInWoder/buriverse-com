@@ -18,12 +18,12 @@ const MemoryGalaxy = () => {
     {
       title: "❄️ Snow Universe Adventures",
       description: "Manali memories that changed everything",
-      details: "Paragliding through clouds, ropeway rides above the valley, yak rides through snow, and snowball fights that turned into emotional bonding sessions. Pure adrenaline and brotherhood."
+      details: "Paragliding through clouds, ropeway rides above the valley, peaceful yak rides, and gliding on snowy slopes. From snowball fights to skiing adventures - each moment added pure adrenaline and brotherhood to your frozen wonderland."
     },
     {
-      title: "🐛 Debugging Life Problems",
+      title: "🐛 Debugging Life Problems", 
       description: "When Python errors become life metaphors",
-      details: "Those deep coding sessions where fixing bugs felt like solving life's mysteries. Your 25-year-old wisdom turning technical challenges into philosophical breakthroughs."
+      details: "Those deep coding sessions where fixing bugs felt like solving life's mysteries. Your wisdom at 25 turning technical challenges into philosophical breakthroughs."
     },
     {
       title: "♟️ Checkmate Moments",

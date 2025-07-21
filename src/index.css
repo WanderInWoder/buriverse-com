@@ -65,6 +65,7 @@
     --glow-neon: 0 0 20px hsl(var(--neon-blue) / 0.5);
     --glow-purple: 0 0 30px hsl(var(--neon-purple) / 0.6);
     --glow-intense: 0 0 40px hsl(var(--primary-glow) / 0.8);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
     
     /* Animations */
     --transition-cosmic: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -131,6 +132,7 @@
     @apply bg-background text-foreground font-mono overflow-x-hidden;
     background: var(--gradient-cosmic);
     min-height: 100vh;
+    scroll-behavior: smooth;
   }
   
   /* Cosmic particle animation */
@@ -247,5 +249,36 @@
     white-space: nowrap;
     margin: 0 auto;
     animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+  }
+  
+  /* Enhanced hover effects */
+  .hover-scale {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Smooth fade transitions */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  /* Reduced star brightness for better text contrast */
+  body::before {
+    opacity: 0.6;
   }
 }
