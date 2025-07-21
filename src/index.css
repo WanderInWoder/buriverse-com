@@ -2,57 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* BURIVERSE Design System - Cosmic Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Cosmic Background Colors */
+    --background: 220 25% 6%;
+    --foreground: 210 40% 98%;
+    
+    /* Deep Space Blues and Purples */
+    --cosmic-deep: 240 30% 8%;
+    --cosmic-medium: 250 35% 15%;
+    --cosmic-bright: 260 50% 25%;
+    
+    /* Neon Accents */
+    --neon-blue: 200 100% 70%;
+    --neon-purple: 280 100% 70%;
+    --neon-pink: 320 100% 70%;
+    --neon-cyan: 180 100% 70%;
+    
+    /* Card and Surface Colors */
+    --card: 240 25% 12%;
+    --card-foreground: 210 40% 98%;
+    --card-glow: 240 50% 20%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --popover: 240 25% 12%;
+    --popover-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
+    /* Primary - Cosmic Blue */
+    --primary: 220 80% 60%;
     --primary-foreground: 210 40% 98%;
+    --primary-glow: 220 100% 80%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Deep Purple */
+    --secondary: 270 50% 40%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent - Neon Cyan */
+    --accent: 180 100% 70%;
+    --accent-foreground: 220 25% 6%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Muted - Darker variants */
+    --muted: 240 20% 20%;
+    --muted-foreground: 215 20% 65%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 30% 25%;
+    --input: 240 25% 15%;
+    --ring: 220 80% 60%;
 
-    --radius: 0.5rem;
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(240, 30%, 8%), hsl(260, 50%, 15%), hsl(280, 60%, 20%));
+    --gradient-neon: linear-gradient(45deg, hsl(200, 100%, 70%), hsl(280, 100%, 70%));
+    --gradient-aurora: linear-gradient(90deg, hsl(200, 100%, 70%), hsl(280, 100%, 70%), hsl(320, 100%, 70%));
+    
+    /* Shadows and Glows */
+    --shadow-cosmic: 0 25px 50px -12px hsl(240, 100%, 8%);
+    --glow-neon: 0 0 20px hsl(var(--neon-blue) / 0.5);
+    --glow-purple: 0 0 30px hsl(var(--neon-purple) / 0.6);
+    --glow-intense: 0 0 40px hsl(var(--primary-glow) / 0.8);
+    
+    /* Animations */
+    --transition-cosmic: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: all 0.3s ease-in-out;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.75rem;
+    
+    /* Sidebar cosmic theme */
+    --sidebar-background: 240 25% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 220 80% 60%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 240 30% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 240 30% 20%;
+    --sidebar-ring: 220 80% 60%;
   }
 
   .dark {
@@ -100,6 +128,124 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono overflow-x-hidden;
+    background: var(--gradient-cosmic);
+    min-height: 100vh;
+  }
+  
+  /* Cosmic particle animation */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, hsl(var(--neon-blue)), transparent),
+      radial-gradient(2px 2px at 40px 70px, hsl(var(--neon-purple)), transparent),
+      radial-gradient(1px 1px at 90px 40px, hsl(var(--neon-cyan)), transparent),
+      radial-gradient(1px 1px at 130px 80px, hsl(var(--neon-pink)), transparent),
+      radial-gradient(2px 2px at 160px 30px, hsl(var(--neon-blue)), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: cosmic-drift 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+@layer components {
+  /* Cosmic animations */
+  @keyframes cosmic-drift {
+    0% { transform: translateY(0px) translateX(0px); }
+    25% { transform: translateY(-100px) translateX(50px); }
+    50% { transform: translateY(-200px) translateX(0px); }
+    75% { transform: translateY(-300px) translateX(-50px); }
+    100% { transform: translateY(-400px) translateX(0px); }
+  }
+  
+  @keyframes neon-pulse {
+    0%, 100% { 
+      box-shadow: 0 0 20px hsl(var(--primary)), 0 0 40px hsl(var(--primary)), 0 0 60px hsl(var(--primary));
+    }
+    50% { 
+      box-shadow: 0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary)), 0 0 30px hsl(var(--primary));
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes glow-rotate {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink {
+    0%, 50% { border-color: transparent; }
+    51%, 100% { border-color: hsl(var(--accent)); }
+  }
+  
+  @keyframes float-up {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  /* Component styles */
+  .cosmic-glow {
+    box-shadow: var(--glow-neon);
+    transition: var(--transition-glow);
+  }
+  
+  .cosmic-glow:hover {
+    box-shadow: var(--glow-intense);
+    transform: translateY(-2px) scale(1.02);
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+  
+  .aurora-border {
+    border: 2px solid transparent;
+    background: linear-gradient(var(--card), var(--card)) padding-box,
+                var(--gradient-aurora) border-box;
+  }
+  
+  .cursor-trail {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, hsl(var(--accent)) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;
+    animation: float 2s ease-in-out infinite;
+  }
+  
+  .typing-animation {
+    overflow: hidden;
+    border-right: 3px solid hsl(var(--accent));
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
   }
 }
