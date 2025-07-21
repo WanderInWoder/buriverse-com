@@ -12,33 +12,38 @@ const MemoryGalaxy = () => {
   const galaxyMemories = [
     {
       title: "🐼 Panda Chronicles",
-      description: "Adventures of the legendary Mum Panda",
-      details: "From random 'take le' moments to becoming the most iconic inside joke in the universe"
+      description: "Adventures with our beloved Mum Panda (our elder sister)",
+      details: "She's our emotional anchor - soft, caring, and round like a panda. From her protective hugs to being the heart of our family chaos, she makes every moment warmer."
     },
     {
-      title: "❄️ Snow Universe",
-      description: "Epic snowball battles and winter magic",
-      details: "Those legendary snow fights that turned into memory-making sessions"
+      title: "❄️ Snow Universe Adventures",
+      description: "Manali memories that changed everything",
+      details: "Paragliding through clouds, ropeway rides above the valley, yak rides through snow, and snowball fights that turned into emotional bonding sessions. Pure adrenaline and brotherhood."
     },
     {
       title: "🐛 Debugging Life Problems",
-      description: "Late night debugging sessions",
-      details: "When Python errors became life metaphors and every bug fix was a breakthrough moment"
+      description: "When Python errors become life metaphors",
+      details: "Those deep coding sessions where fixing bugs felt like solving life's mysteries. Your 25-year-old wisdom turning technical challenges into philosophical breakthroughs."
     },
     {
-      title: "♟️ Late Night Chess Matches",
-      description: "Strategic battles at 2 AM",
-      details: "Chess games that lasted until sunrise, with strategies as complex as your code"
+      title: "♟️ Checkmate Moments",
+      description: "Our sacred chess bond",
+      details: "Not serious tournaments or bragging rights. Just quiet moments where we laugh over misclicks, plot emotional checkmates, and build a bond beyond words. It's not about the pieces - it's about having a player who gets you."
     },
     {
       title: "😂 Inside Joke Repository",
-      description: "Collection of legendary moments",
-      details: "From 'vomit out' instead of 'warm it' to countless moments that only we understand"
+      description: "Galaxies of laughter in our universe",
+      details: "The legendary 'warm it' → 'vomit out' translation disaster, random 'take le' outbursts, and countless misheard phrases that became our secret language."
     },
     {
-      title: "💡 Breakthrough Moments",
-      description: "Eureka instances in coding and life",
-      details: "Those 3 AM moments when everything finally clicked"
+      title: "🎵 Moody Music Explorations",
+      description: "Your emotional soundtrack journey", 
+      details: "From Juice WRLD to XXXTENTACION, iann dior to Post Malone - the music that speaks what you sometimes hold inside. Each song a gateway to your deeper thoughts."
+    },
+    {
+      title: "🎮 Logical Realms",
+      description: "Mature adventures and mental challenges",
+      details: "Not childish games, but intellectually rich experiences. Creating, solving, exploring things different from the usual world. Your curious mind always seeking something deeper."
     }
   ];
 
