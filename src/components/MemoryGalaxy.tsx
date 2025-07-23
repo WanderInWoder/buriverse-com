@@ -23,7 +23,7 @@ const MemoryGalaxy = () => {
     {
       title: "🐛 Debugging Life Problems", 
       description: "When Python errors become life metaphors",
-      details: "Those deep coding sessions where fixing bugs felt like solving life's mysteries. Your wisdom at 25 turning technical challenges into philosophical breakthroughs."
+      details: "Those deep coding sessions where fixing bugs felt like solving life's mysteries. Your wisdom at 25 turning technical challenges into philosophical breakthroughs - coding, gaming, and researching deep about softwares."
     },
     {
       title: "♟️ Checkmate Moments",
@@ -43,7 +43,7 @@ const MemoryGalaxy = () => {
     {
       title: "🎮 Logical Realms",
       description: "Mature adventures and mental challenges",
-      details: "Not childish games, but intellectually rich experiences. Creating, solving, exploring things different from the usual world. Your curious mind always seeking something deeper."
+      details: "At 25, your passions shine through coding, gaming, and researching deep about softwares. Creating intellectually rich experiences, solving complex problems, and exploring realms that challenge your brilliant mind."
     }
   ];
 
