@@ -26,11 +26,6 @@ const MemoryGalaxy = () => {
       details: "Those deep coding sessions where fixing bugs felt like solving life's mysteries. Your wisdom at 25 turning technical challenges into philosophical breakthroughs - coding, gaming, and researching deep about softwares."
     },
     {
-      title: "♟️ Checkmate Moments",
-      description: "Our sacred chess bond",
-      details: "Not serious tournaments or bragging rights. Just quiet moments where we laugh over misclicks, plot emotional checkmates, and build a bond beyond words. It's not about the pieces - it's about having a player who gets you."
-    },
-    {
       title: "😂 Inside Joke Repository",
       description: "Galaxies of laughter in our universe",
       details: "The legendary 'warm it' → 'vomit out' translation disaster, random 'take le' outbursts, and countless misheard phrases that became our secret language."
@@ -43,7 +38,7 @@ const MemoryGalaxy = () => {
     {
       title: "🎮 Logical Realms",
       description: "Mature adventures and mental challenges",
-      details: "At 25, your passions shine through coding, gaming, and researching deep about softwares. Creating intellectually rich experiences, solving complex problems, and exploring realms that challenge your brilliant mind."
+      details: "At such a young age, your passions shine through coding, gaming, and researching deep about softwares. Creating intellectually rich experiences, solving complex problems, and exploring realms that challenge your brilliant mind."
     }
   ];
 

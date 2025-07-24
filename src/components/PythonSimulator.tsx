@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 const PythonSimulator = () => {
-  const [code, setCode] = useState("# Welcome to BURIVERSE Python Terminal!\nprint('Hello, Buri! 🐍')\n\n# Try some code:\nname = 'Buri'\nprint(f'Happy Birthday, {name}!')\n\n# Math operations\nage = 21  # Update with your age\nprint(f'In 10 years, you will be {age + 10}!')\n\n# List operations\nhobbies = ['coding', 'chess', 'snow fights']\nprint('Your hobbies:', hobbies)");
+  const [code, setCode] = useState("# Welcome to BURIVERSE Python Terminal!\nprint('Hello, Buri! 🐍')\n\n# Try some code:\nname = 'Buri'\nprint(f'Happy Birthday, {name}!')\n\n# Math operations\nage = 25  # Update with your age\nprint(f'In 10 years, you will be {age + 10}!')\n\n# List operations\nhobbies = ['coding', 'gaming', 'researching deep about softwares']\nprint('Your hobbies:', hobbies)");
   const [output, setOutput] = useState("import python\n# Your output will appear here...");
   const [isRunning, setIsRunning] = useState(false);
   const { toast } = useToast();
@@ -39,11 +39,11 @@ const PythonSimulator = () => {
                 let content = fStringMatch[1];
                 // Simple variable substitution
                 content = content.replace(/{name}/g, 'Buri');
-                content = content.replace(/{age \+ 10}/g, '31');
+                content = content.replace(/{age \+ 10}/g, '35');
                 result += content + '\n';
               }
             } else if (trimmedLine.includes('hobbies')) {
-              result += "Your hobbies: ['coding', 'chess', 'snow fights']\n";
+              result += "Your hobbies: ['coding', 'gaming', 'researching deep about softwares']\n";
             }
           }
           
@@ -89,7 +89,7 @@ const PythonSimulator = () => {
 print("Welcome to Buri's Cosmic Python Lab!")
 
 # Birthday calculator
-birth_year = 2003  # Update with your birth year
+birth_year = 1999  # Update with your birth year
 current_year = 2024
 age = current_year - birth_year
 print(f"You are {age} years old!")
@@ -102,11 +102,11 @@ print("🎉 HAPPY BIRTHDAY BURI! 🎉")
 
 # Memory generator
 memories = [
-    "Snow fights with Panda",
+    "Snow adventures with Mum Panda",
     "Late night coding sessions", 
-    "Chess matches at 2 AM",
-    "Inside jokes that make no sense",
-    "Debugging life problems together"
+    "Gaming marathons till dawn",
+    "Researching deep software concepts",
+    "Inside jokes that make no sense"
 ]
 
 print("\\nYour precious memories:")

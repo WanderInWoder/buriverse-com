@@ -11,6 +11,12 @@ const EnhancedGames = () => {
 
   const games = [
     {
+      id: "gate-of-mind",
+      title: "🧠 BURIVERSE - The Gate of Mind",
+      description: "A serious, intelligent logic challenge designed with love",
+      type: "logic"
+    },
+    {
       id: "snow-trek",
       title: "❄️ Snow Trek: The Frozen Path",
       description: "Navigate through emotional snow memories",
@@ -18,7 +24,7 @@ const EnhancedGames = () => {
     },
     {
       id: "python-puzzle",
-      title: "🧠 EchoMind: Python Puzzle Room",
+      title: "🐍 EchoMind: Python Puzzle Room",
       description: "Solve coding riddles to unlock memories",
       type: "puzzle"
     },
@@ -27,12 +33,6 @@ const EnhancedGames = () => {
       title: "🎵 Guess the Song Vibe",
       description: "Match emotions to your favorite tracks",
       type: "music"
-    },
-    {
-      id: "glitch-runner",
-      title: "🕹️ Glitch Through BURIVERSE",
-      description: "2D adventure through your digital universe",
-      type: "action"
     }
   ];
 
@@ -40,6 +40,10 @@ const EnhancedGames = () => {
     setActiveGame(gameId);
     
     switch(gameId) {
+      case "gate-of-mind":
+        // This will open the full-screen game
+        window.open('/gate-of-mind', '_blank');
+        break;
       case "snow-trek":
         toast({
           title: "🎿 Starting Snow Trek",
@@ -56,12 +60,6 @@ const EnhancedGames = () => {
         toast({
           title: "🎧 Music Vibe Challenge",
           description: "Feel the rhythm of your emotional soundtrack...",
-        });
-        break;
-      case "glitch-runner":
-        toast({
-          title: "👾 Glitching Reality",
-          description: "Navigate through digital memories...",
         });
         break;
     }

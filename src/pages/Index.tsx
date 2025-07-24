@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import CursorTrail from "@/components/CursorTrail";
 import CosmicParticles from "@/components/CosmicParticles";
 import FloatingElements from "@/components/FloatingElements";
+import BirthdayAnimations from "@/components/BirthdayAnimations";
 import PythonSimulator from "@/components/PythonSimulator";
 import MemoryGalaxy from "@/components/MemoryGalaxy";
 import CheckmateMoments from "@/components/CheckmateMoments";
@@ -59,6 +60,7 @@ const Index = () => {
       <CosmicParticles />
       <FloatingElements />
       <CursorTrail />
+      <BirthdayAnimations />
       
       {/* Welcome Audio */}
       <audio ref={audioRef} preload="auto">
