@@ -8,7 +8,7 @@ import BirthdayAnimations from "@/components/BirthdayAnimations";
 import PythonSimulator from "@/components/PythonSimulator";
 import MemoryGalaxy from "@/components/MemoryGalaxy";
 import CheckmateMoments from "@/components/CheckmateMoments";
-import EnhancedGames from "@/components/EnhancedGames";
+import GameNavigation from "@/components/GameNavigation";
 import SongGenerator from "@/components/SongGenerator";
 import { useToast } from "@/hooks/use-toast";
 
@@ -161,7 +161,7 @@ const Index = () => {
       <CheckmateMoments />
 
       {/* Enhanced Interactive Games */}
-      <EnhancedGames />
+      <GameNavigation />
 
       {/* Footer */}
       <footer className="py-12 px-6 text-center">
