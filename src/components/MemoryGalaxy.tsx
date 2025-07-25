@@ -38,7 +38,7 @@ const MemoryGalaxy = () => {
     {
       title: "🎮 Logical Realms",
       description: "Mature adventures and mental challenges",
-      details: "Even at such a young age, your passions shine through — from coding and gaming to diving deep into the world of software. You create intellectually rich experiences, solve complex problems, and constantly explore realms that push the boundaries of your brilliant mind."
+      details: "Even at such a young age, you've carried yourself with a sense of purpose far beyond your years. You handle everything — from challenges to responsibilities — with a calm, composed strength that many twice your age still strive for. Whether it's diving deep into the world of tech, making sense of complex systems, or quietly taking care of things without ever needing to be asked, you've already achieved so much. And yet, you do it all with such ease, never chasing attention — just quietly being brilliant."
     }
   ];
 

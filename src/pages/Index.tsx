@@ -87,10 +87,19 @@ const Index = () => {
           </p>
           
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button className="cosmic-glow font-orbitron hover-scale transition-all duration-300 hover:shadow-glow" size="lg">
+            <Button 
+              onClick={() => document.getElementById('memory-galaxy')?.scrollIntoView({ behavior: 'smooth' })}
+              className="cosmic-glow font-orbitron hover-scale transition-all duration-300 hover:shadow-glow" 
+              size="lg"
+            >
               🚀 Explore BURIVERSE
             </Button>
-            <Button variant="outline" className="aurora-border font-orbitron hover-scale transition-all duration-300" size="lg">
+            <Button 
+              onClick={() => window.open('https://youtube.com/shorts/S8z57UyxQOQ?si=pAJILrjtXwNWuK8N', '_blank')}
+              variant="outline" 
+              className="aurora-border font-orbitron hover-scale transition-all duration-300" 
+              size="lg"
+            >
               🎵 Play the Mashup
             </Button>
           </div>
@@ -121,7 +130,7 @@ const Index = () => {
                 </p>
                 
                 <p>
-                  From Python scripts to snowball fights, from teasing didi as 'mum panda' to turning ordinary phrases into iconic inside jokes — like mishearing "warm it" as "vomit out" and randomly blurting "take le" — every little thing with you became a memory I never want to forget.
+                  From ordinary days that turned magical with you, to the chaos we somehow made our language — like mishearing "warm it" as "vomit out" and randomly blurting "take le" — every little thing with you became a memory I never want to forget.
                 </p>
                 
                 <p>
@@ -143,7 +152,7 @@ const Index = () => {
                 <p className="font-bold text-xl text-accent">
                   Happy Birthday! 💙<br />
                   With all my infinite heart,<br />
-                  — Panda
+                  — Disha
                 </p>
               </div>
             </CardContent>
@@ -167,8 +176,20 @@ const Index = () => {
       <footer className="py-12 px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <p className="text-xl font-space neon-text">
-            From Mum Panda & Aradhya 🐼 – "Take le... not vomit out!" 💖
+            From mum-panda and Disha 🐼 – "Take le... not vomit out!" 💖
           </p>
+          <div className="mt-6">
+            <iframe 
+              width="560" 
+              height="315" 
+              src="https://www.youtube.com/embed/S8z57UyxQOQ?si=pAJILrjtXwNWuK8N&autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1" 
+              title="Birthday Song" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+              className="mx-auto rounded-lg cosmic-glow max-w-full h-48 md:h-80"
+            ></iframe>
+          </div>
           <p className="text-sm mt-4 text-muted-foreground">
             Made with ∞ love in the cosmic void of code
           </p>

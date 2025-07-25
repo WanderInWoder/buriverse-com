@@ -17,22 +17,10 @@ const EnhancedGames = () => {
       type: "logic"
     },
     {
-      id: "snow-trek",
-      title: "❄️ Snow Trek: The Frozen Path",
-      description: "Navigate through emotional snow memories",
-      type: "adventure"
-    },
-    {
       id: "python-puzzle",
       title: "🐍 EchoMind: Python Puzzle Room",
       description: "Solve coding riddles to unlock memories",
       type: "puzzle"
-    },
-    {
-      id: "music-vibe",
-      title: "🎵 Guess the Song Vibe",
-      description: "Match emotions to your favorite tracks",
-      type: "music"
     }
   ];
 
