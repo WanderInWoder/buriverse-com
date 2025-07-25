@@ -178,17 +178,22 @@ const Index = () => {
           <p className="text-xl font-space neon-text">
             From mum-panda and Disha 🐼 – "Take le... not vomit out!" 💖
           </p>
-          <div className="mt-6">
+          <div className="mt-6 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-blue-500/20 rounded-lg animate-pulse"></div>
             <iframe 
               width="560" 
               height="315" 
-              src="https://www.youtube.com/embed/S8z57UyxQOQ?si=pAJILrjtXwNWuK8N&autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1" 
+              src="https://www.youtube.com/embed/S8z57UyxQOQ?si=pAJILrjtXwNWuK8N&autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&disablekb=1&fs=0" 
               title="Birthday Song" 
               frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
               allowFullScreen
-              className="mx-auto rounded-lg cosmic-glow max-w-full h-48 md:h-80"
+              className="mx-auto rounded-lg cosmic-glow max-w-full h-48 md:h-80 relative z-10 border-2 border-accent/30"
             ></iframe>
+            <div className="absolute -top-2 -right-2 text-2xl animate-bounce">🎉</div>
+            <div className="absolute -bottom-2 -left-2 text-2xl animate-bounce" style={{animationDelay: '0.5s'}}>🎂</div>
+            <div className="absolute -top-2 -left-2 text-2xl animate-bounce" style={{animationDelay: '1s'}}>🎈</div>
+            <div className="absolute -bottom-2 -right-2 text-2xl animate-bounce" style={{animationDelay: '1.5s'}}>✨</div>
           </div>
           <p className="text-sm mt-4 text-muted-foreground">
             Made with ∞ love in the cosmic void of code
