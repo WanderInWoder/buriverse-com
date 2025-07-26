@@ -10,6 +10,7 @@ import MemoryGalaxy from "@/components/MemoryGalaxy";
 import CheckmateMoments from "@/components/CheckmateMoments";
 import GameNavigation from "@/components/GameNavigation";
 import SongGenerator from "@/components/SongGenerator";
+import LogicVault from "@/components/LogicVault";
 import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
@@ -172,6 +173,9 @@ const Index = () => {
       {/* Enhanced Interactive Games */}
       <GameNavigation />
 
+      {/* Logic Vault */}
+      <LogicVault />
+
       {/* Footer */}
       <footer className="py-12 px-6 text-center">
         <div className="max-w-4xl mx-auto">
@@ -183,7 +187,7 @@ const Index = () => {
             <iframe 
               width="560" 
               height="315" 
-              src="https://www.youtube.com/embed/S8z57UyxQOQ?si=pAJILrjtXwNWuK8N&autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&disablekb=1&fs=0" 
+              src="https://www.youtube.com/embed/S8z57UyxQOQ?si=pAJILrjtXwNWuK8N&autoplay=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&disablekb=1&fs=0" 
               title="Birthday Song" 
               frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
