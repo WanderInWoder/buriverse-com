@@ -339,7 +339,7 @@ const EliteMindGame = () => {
     },
     {
       id: "mirrorLogic",
-      title: "🪞 Mirror Logic",
+      title: "🪞 Carousel Mirror",
       difficulty: "Advanced", 
       description: "Type something to see your mirrored reflection.",
       content: (
@@ -360,7 +360,7 @@ const EliteMindGame = () => {
     },
     {
       id: "functionFusion",
-      title: "🔬 Function Fusion",
+      title: "🔬 Logic Function Fusion",
       difficulty: "Prodigy",
       description: "Enter two Boolean values and a logic function.",
       content: (
