@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 
 const EnhancedGames = () => {
@@ -248,6 +249,239 @@ const EnhancedGames = () => {
         )}
       </div>
     </section>
+  );
+};
+
+// Elite Mind Challenge Games Component
+const EliteMindGame = () => {
+  const [activeGame, setActiveGame] = useState<string | null>(null);
+
+  // Code Breaker Game
+  const [codeInput, setCodeInput] = useState("");
+  const [codeResult, setCodeResult] = useState("");
+  const secretCode = "2714";
+
+  const checkCode = () => {
+    if (codeInput === secretCode) {
+      setCodeResult("✅ Correct! You cracked the code!");
+    } else {
+      setCodeResult("❌ Wrong code. Try again!");
+    }
+  };
+
+  // Mirror Logic Game
+  const [mirrorInput, setMirrorInput] = useState("");
+  const mirrorResult = mirrorInput.split('').reverse().join('');
+
+  // Logic Function Fusion
+  const [bool1, setBool1] = useState("");
+  const [bool2, setBool2] = useState("");
+  const [logicFunc, setLogicFunc] = useState("AND");
+  const [logicResult, setLogicResult] = useState("");
+
+  const runLogic = () => {
+    const b1 = bool1.toLowerCase() === "true";
+    const b2 = bool2.toLowerCase() === "true";
+    let result: boolean | string = "Invalid";
+    if (logicFunc === "AND") result = b1 && b2;
+    else if (logicFunc === "OR") result = b1 || b2;
+    else if (logicFunc === "XOR") result = (b1 !== b2);
+    setLogicResult(result.toString());
+  };
+
+  // Paradox Portal
+  const [paradox, setParadox] = useState("undefined");
+  const generateParadox = () => {
+    const paradoxes = ["false", "true", "undefined", "both true and false"];
+    const r = paradoxes[Math.floor(Math.random() * paradoxes.length)];
+    setParadox(r);
+  };
+
+  // The Imitator
+  const [imitatorInput, setImitatorInput] = useState("");
+  const [imitatorResult, setImitatorResult] = useState("");
+
+  const imitate = () => {
+    const choices = [
+      imitatorInput.toUpperCase(),
+      imitatorInput.toLowerCase(),
+      imitatorInput.split('').reverse().join(''),
+      imitatorInput.replace(/[aeiou]/gi, '*')
+    ];
+    const mimic = choices[Math.floor(Math.random() * choices.length)];
+    setImitatorResult(mimic);
+  };
+
+  const games = [
+    {
+      id: "codeBreaker",
+      title: "🧠 Code Breaker",
+      difficulty: "Mastermind",
+      description: "Guess the secret 4-digit code. Hint: All digits are different!",
+      content: (
+        <div className="space-y-4">
+          <Input
+            type="text"
+            value={codeInput}
+            onChange={(e) => setCodeInput(e.target.value)}
+            maxLength={4}
+            placeholder="Enter 4-digit code"
+            className="text-center text-lg font-mono bg-black/50"
+          />
+          <Button onClick={checkCode} className="w-full cosmic-glow">
+            Submit Code
+          </Button>
+          {codeResult && (
+            <p className="text-center font-space text-sm">{codeResult}</p>
+          )}
+        </div>
+      )
+    },
+    {
+      id: "mirrorLogic",
+      title: "🪞 Mirror Logic",
+      difficulty: "Advanced", 
+      description: "Type something to see your mirrored reflection.",
+      content: (
+        <div className="space-y-4">
+          <Input
+            type="text"
+            value={mirrorInput}
+            onChange={(e) => setMirrorInput(e.target.value)}
+            placeholder="Type anything..."
+            className="bg-black/50"
+          />
+          <div className="bg-accent/10 p-3 rounded-lg">
+            <p className="text-sm font-space">🔁 Mirrored Output:</p>
+            <p className="font-mono text-accent text-center">{mirrorResult}</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: "functionFusion",
+      title: "🔬 Function Fusion",
+      difficulty: "Prodigy",
+      description: "Enter two Boolean values and a logic function.",
+      content: (
+        <div className="space-y-4">
+          <Input
+            value={bool1}
+            onChange={(e) => setBool1(e.target.value)}
+            placeholder="true or false"
+            className="bg-black/50"
+          />
+          <Input
+            value={bool2}
+            onChange={(e) => setBool2(e.target.value)}
+            placeholder="true or false"
+            className="bg-black/50"
+          />
+          <select 
+            value={logicFunc}
+            onChange={(e) => setLogicFunc(e.target.value)}
+            className="w-full p-2 bg-black/50 border border-accent/30 rounded text-white"
+          >
+            <option value="AND">AND</option>
+            <option value="OR">OR</option>
+            <option value="XOR">XOR</option>
+          </select>
+          <Button onClick={runLogic} className="w-full cosmic-glow">
+            Run Logic
+          </Button>
+          {logicResult && (
+            <div className="bg-accent/10 p-3 rounded-lg text-center">
+              <p className="font-mono text-accent">Result: {logicResult}</p>
+            </div>
+          )}
+        </div>
+      )
+    },
+    {
+      id: "paradoxPortal",
+      title: "🌀 Paradox Portal",
+      difficulty: "Genius",
+      description: "Generate logical paradoxes that challenge reality.",
+      content: (
+        <div className="space-y-4">
+          <div className="bg-black/50 p-4 rounded-lg text-center">
+            <p className="font-space">This statement is <strong className="text-accent">{paradox}</strong>.</p>
+          </div>
+          <Button onClick={generateParadox} className="w-full cosmic-glow">
+            Generate Paradox
+          </Button>
+        </div>
+      )
+    },
+    {
+      id: "imitator",
+      title: "🧿 The Imitator",
+      difficulty: "Elite Thinker",
+      description: "Type anything and watch it mimic your style.",
+      content: (
+        <div className="space-y-4">
+          <Input
+            value={imitatorInput}
+            onChange={(e) => setImitatorInput(e.target.value)}
+            placeholder="Type anything..."
+            className="bg-black/50"
+          />
+          <Button onClick={imitate} className="w-full cosmic-glow">
+            Imitate Me
+          </Button>
+          {imitatorResult && (
+            <div className="bg-accent/10 p-3 rounded-lg">
+              <p className="text-sm font-space">Mimicked Output:</p>
+              <p className="font-mono text-accent text-center">{imitatorResult}</p>
+            </div>
+          )}
+        </div>
+      )
+    }
+  ];
+
+  return (
+    <>
+      {games.map((game) => (
+        <Card key={game.id} className="cosmic-glow aurora-border hover-scale">
+          <CardContent className="p-6">
+            <div className="text-center mb-4">
+              <div className="text-3xl mb-2">{game.title.split(' ')[0]}</div>
+              <h4 className="font-orbitron font-bold text-accent mb-2">
+                {game.title}
+              </h4>
+              <div className="text-xs bg-accent/20 px-2 py-1 rounded-full inline-block mb-3">
+                Difficulty: {game.difficulty}
+              </div>
+              <p className="text-sm font-space text-muted-foreground mb-4">
+                {game.description}
+              </p>
+            </div>
+            
+            {activeGame === game.id ? (
+              <div className="space-y-4">
+                {game.content}
+                <Button 
+                  onClick={() => setActiveGame(null)}
+                  variant="outline"
+                  className="w-full"
+                >
+                  Close Game
+                </Button>
+              </div>
+            ) : (
+              <Button 
+                onClick={() => setActiveGame(game.id)}
+                className="w-full cosmic-glow font-orbitron hover-scale"
+                variant="outline"
+              >
+                Enter Game
+              </Button>
+            )}
+          </CardContent>
+        </Card>
+      ))}
+    </>
   );
 };
 

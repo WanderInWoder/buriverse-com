@@ -89,7 +89,15 @@ const Index = () => {
           
           <div className="flex flex-wrap gap-4 justify-center">
             <Button 
-              onClick={() => document.getElementById('memory-galaxy')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                document.getElementById('memory-galaxy')?.scrollIntoView({ behavior: 'smooth' });
+                // Show scroll instruction temporarily
+                const instruction = document.createElement('div');
+                instruction.textContent = 'scroll to see';
+                instruction.className = 'fixed top-20 left-1/2 transform -translate-x-1/2 bg-accent/90 text-black px-4 py-2 rounded-lg font-orbitron text-sm z-50 animate-fade-in';
+                document.body.appendChild(instruction);
+                setTimeout(() => instruction.remove(), 3000);
+              }}
               className="cosmic-glow font-orbitron hover-scale transition-all duration-300 hover:shadow-glow" 
               size="lg"
             >
