@@ -195,7 +195,7 @@ const Index = () => {
             <iframe 
               width="560" 
               height="315" 
-              src="https://www.youtube.com/embed/S8z57UyxQOQ?si=pAJILrjtXwNWuK8N&autoplay=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&disablekb=1&fs=0" 
+              src="https://www.youtube.com/embed/S8z57UyxQOQ?si=pAJILrjtXwNWuK8N&autoplay=1&mute=0&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&disablekb=1&fs=0" 
               title="Birthday Song" 
               frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

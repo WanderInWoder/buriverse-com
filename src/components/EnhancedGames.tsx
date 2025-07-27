@@ -7,6 +7,11 @@ const EnhancedGames = () => {
   const [activeGame, setActiveGame] = useState<string | null>(null);
   const [skiScore, setSkiScore] = useState(0);
   const [pythonAnswer, setPythonAnswer] = useState("");
+  const [codeInput, setCodeInput] = useState("");
+  const [codeHint, setCodeHint] = useState("");
+  const [logicInput1, setLogicInput1] = useState("");
+  const [logicInput2, setLogicInput2] = useState("");
+  const [logicOutput, setLogicOutput] = useState("");
   const { toast } = useToast();
 
   const games = [
@@ -21,6 +26,12 @@ const EnhancedGames = () => {
       title: "🐍 EchoMind: Python Puzzle Room",
       description: "Solve coding riddles to unlock memories",
       type: "puzzle"
+    },
+    {
+      id: "mind-palace",
+      title: "🏛️ Mind Palace Games",
+      description: "5 brain-bending challenges to test your cognitive abilities",
+      type: "mind-palace"
     }
   ];
 
@@ -44,10 +55,10 @@ const EnhancedGames = () => {
           description: "Solve the riddle: print(emotion_that_ends_story)",
         });
         break;
-      case "music-vibe":
+      case "mind-palace":
         toast({
-          title: "🎧 Music Vibe Challenge",
-          description: "Feel the rhythm of your emotional soundtrack...",
+          title: "🏛️ Mind Palace Activated",
+          description: "5 cognitive challenges await your brilliant mind...",
         });
         break;
     }
@@ -66,6 +77,39 @@ const EnhancedGames = () => {
         description: "Think about what binds all our memories together...",
       });
     }
+  };
+
+  const checkCode = () => {
+    const secret = "483";
+    if (codeInput.length !== 3 || isNaN(Number(codeInput))) {
+      setCodeHint("Enter a valid 3-digit number.");
+    } else {
+      let hint = "";
+      for (let i = 0; i < 3; i++) {
+        if (codeInput[i] === secret[i]) hint += "🔴";
+        else if (secret.includes(codeInput[i])) hint += "🟡";
+      }
+      setCodeHint("Hint: " + hint);
+      if (hint === "🔴🔴🔴") {
+        toast({
+          title: "🎉 Code Cracked!",
+          description: "You've unlocked the secret! Well done!",
+        });
+      }
+    }
+  };
+
+  const runLogicFusion = () => {
+    const a = logicInput1;
+    const b = logicInput2;
+    if ((a !== "0" && a !== "1") || (b !== "0" && b !== "1")) {
+      setLogicOutput("Please enter 0 or 1 only.");
+      return;
+    }
+    const aNum = parseInt(a);
+    const bNum = parseInt(b);
+    const fusion = (aNum && !bNum) || (!aNum && bNum); // XOR-like behavior
+    setLogicOutput("Output: " + fusion);
   };
 
   return (
@@ -129,41 +173,119 @@ const EnhancedGames = () => {
           </Card>
         )}
 
-        {/* Snow Trek Story */}
-        {activeGame === "snow-trek" && (
-          <Card className="cosmic-glow aurora-border animate-fade-in">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-orbitron font-bold mb-4 text-accent">
-                ❄️ The Frozen Path Awaits
-              </h3>
-              <div className="space-y-4">
-                <p className="font-space">
-                  You're standing at the edge of a snowy valley. The wind carries echoes of laughter and distant music...
+        {/* Mind Palace Games */}
+        {activeGame === "mind-palace" && (
+          <div className="space-y-6 animate-fade-in">
+            {/* Code Breaker */}
+            <Card className="cosmic-glow aurora-border">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-orbitron font-bold mb-3 text-accent">🧠 Code Breaker</h3>
+                <p className="text-muted-foreground mb-4 font-space">
+                  Guess the secret 3-digit code. After each try, get feedback: 🔴 = correct digit & place, 🟡 = correct digit wrong place.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Button 
-                    onClick={() => setSkiScore(prev => prev + 10)}
-                    className="cosmic-glow font-orbitron"
-                  >
-                    🎿 Take the skiing path
-                  </Button>
-                  <Button 
-                    onClick={() => setSkiScore(prev => prev + 5)}
-                    variant="outline" 
-                    className="aurora-border font-orbitron"
-                  >
-                    🐐 Follow the yak trail
-                  </Button>
+                <div className="flex gap-4">
+                  <input
+                    type="text"
+                    value={codeInput}
+                    onChange={(e) => setCodeInput(e.target.value)}
+                    placeholder="Enter 3-digit code"
+                    maxLength={3}
+                    className="flex-1 p-3 rounded-lg bg-background/50 border border-accent/20 text-white"
+                  />
+                  <Button onClick={checkCode} className="cosmic-glow">Submit</Button>
                 </div>
-                {skiScore > 0 && (
-                  <div className="mt-4 p-4 bg-blue-500/10 rounded-lg">
-                    <p className="text-accent">Adventure Score: {skiScore}</p>
-                    <p className="text-sm text-muted-foreground">Each choice shapes your snow memory...</p>
-                  </div>
-                )}
-              </div>
-            </CardContent>
-          </Card>
+                {codeHint && <p className="mt-2 text-accent">{codeHint}</p>}
+              </CardContent>
+            </Card>
+
+            {/* Carousel Mirror */}
+            <Card className="cosmic-glow aurora-border">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-orbitron font-bold mb-3 text-accent">🔄 Carousel Mirror</h3>
+                <p className="text-muted-foreground mb-4 font-space">
+                  A pattern rotates and flips. What comes next?
+                </p>
+                <p className="mb-4"><strong>Sequence:</strong> A → E → A → ?</p>
+                <Button 
+                  onClick={() => toast({
+                    title: "🎉 Answer Revealed!",
+                    description: "E (It mirrors every step)"
+                  })}
+                  className="cosmic-glow"
+                >
+                  Reveal Answer
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Logic Function Fusion */}
+            <Card className="cosmic-glow aurora-border">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-orbitron font-bold mb-3 text-accent">🧮 Logic Function Fusion</h3>
+                <p className="text-muted-foreground mb-4 font-space">
+                  Fusion of AND, OR, NOT. Enter logic values (1 or 0) and see the result.
+                </p>
+                <div className="flex gap-4 mb-4">
+                  <input
+                    type="text"
+                    value={logicInput1}
+                    onChange={(e) => setLogicInput1(e.target.value)}
+                    placeholder="1 or 0"
+                    maxLength={1}
+                    className="w-20 p-3 rounded-lg bg-background/50 border border-accent/20 text-white"
+                  />
+                  <input
+                    type="text"
+                    value={logicInput2}
+                    onChange={(e) => setLogicInput2(e.target.value)}
+                    placeholder="1 or 0"
+                    maxLength={1}
+                    className="w-20 p-3 rounded-lg bg-background/50 border border-accent/20 text-white"
+                  />
+                  <Button onClick={runLogicFusion} className="cosmic-glow">Run</Button>
+                </div>
+                {logicOutput && <p className="text-accent">{logicOutput}</p>}
+              </CardContent>
+            </Card>
+
+            {/* Paradox Portal */}
+            <Card className="cosmic-glow aurora-border">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-orbitron font-bold mb-3 text-accent">⏳ Paradox Portal</h3>
+                <p className="text-muted-foreground mb-4 font-space">
+                  You enter a portal and meet your past self who says, "Don't enter." Did you enter?
+                </p>
+                <Button 
+                  onClick={() => toast({
+                    title: "🌀 Paradox Solved!",
+                    description: "You did. Otherwise, you wouldn't hear the warning."
+                  })}
+                  className="cosmic-glow"
+                >
+                  Reveal Answer
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* The Imitator */}
+            <Card className="cosmic-glow aurora-border">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-orbitron font-bold mb-3 text-accent">🎭 The Imitator</h3>
+                <p className="text-muted-foreground mb-4 font-space">
+                  Every move you make, the imitator repeats. Can you find a move it can't copy?
+                </p>
+                <Button 
+                  onClick={() => toast({
+                    title: "🎭 Mystery Solved!",
+                    description: "Do nothing. Inaction can't be mirrored."
+                  })}
+                  className="cosmic-glow"
+                >
+                  Reveal Answer
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         )}
       </div>
     </section>

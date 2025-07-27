@@ -18,6 +18,7 @@ const PythonSimulator = () => {
     setTimeout(() => {
       try {
         let result = "";
+        let variables: Record<string, any> = {};
         const lines = code.split('\n');
         
         for (const line of lines) {
@@ -26,35 +27,130 @@ const PythonSimulator = () => {
           if (trimmedLine.startsWith('#') || trimmedLine === '') {
             continue;
           }
-          
-          // Simulate basic Python operations
-          if (trimmedLine.startsWith('print(')) {
-            const printContent = trimmedLine.match(/print\(['"`](.*)['"`]\)/);
-            if (printContent) {
-              result += printContent[1] + '\n';
-            } else if (trimmedLine.includes('f\'') || trimmedLine.includes('f"')) {
-              // Handle f-strings
-              const fStringMatch = trimmedLine.match(/print\(f['"`](.*)['"`]\)/);
-              if (fStringMatch) {
-                let content = fStringMatch[1];
-                // Simple variable substitution
-                content = content.replace(/{name}/g, 'Buri');
-                content = content.replace(/{age \+ 10}/g, '35');
-                result += content + '\n';
-              }
-            } else if (trimmedLine.includes('hobbies')) {
-              result += "Your hobbies: ['coding', 'gaming', 'researching deep about softwares']\n";
-            }
+
+          // Check for syntax errors
+          if (trimmedLine.includes('print(') && !trimmedLine.includes(')')) {
+            throw new Error("SyntaxError: missing closing parenthesis in print statement");
+          }
+
+          if (trimmedLine.includes('=') && trimmedLine.startsWith('=')) {
+            throw new Error("SyntaxError: invalid assignment target");
           }
           
           // Handle variable assignments
-          if (trimmedLine.includes('=') && !trimmedLine.startsWith('print')) {
-            result += `✓ Variable assigned: ${trimmedLine}\n`;
+          if (trimmedLine.includes('=') && !trimmedLine.startsWith('print') && !trimmedLine.includes('==')) {
+            const [varName, varValue] = trimmedLine.split('=').map(s => s.trim());
+            try {
+              if (varValue.startsWith('"') || varValue.startsWith("'")) {
+                variables[varName] = varValue.slice(1, -1);
+              } else if (!isNaN(Number(varValue))) {
+                variables[varName] = Number(varValue);
+              } else if (varValue.startsWith('[') && varValue.endsWith(']')) {
+                variables[varName] = varValue;
+              } else {
+                variables[varName] = varValue;
+              }
+              result += `✓ Variable assigned: ${varName} = ${varValue}\n`;
+            } catch {
+              throw new Error(`NameError: variable '${varValue}' is not defined`);
+            }
+          }
+          
+          // Handle print statements
+          if (trimmedLine.startsWith('print(')) {
+            // Basic string print
+            const basicPrint = trimmedLine.match(/print\(['"`]([^'"`]*)['"`]\)/);
+            if (basicPrint) {
+              result += basicPrint[1] + '\n';
+              continue;
+            }
+
+            // F-string handling
+            if (trimmedLine.includes('f\'') || trimmedLine.includes('f"')) {
+              const fStringMatch = trimmedLine.match(/print\(f['"`]([^'"`]*)['"`]\)/);
+              if (fStringMatch) {
+                let content = fStringMatch[1];
+                // Replace variables in f-strings
+                for (const [varName, varValue] of Object.entries(variables)) {
+                  content = content.replace(new RegExp(`{${varName}}`, 'g'), String(varValue));
+                }
+                // Handle expressions like {age + 10}
+                content = content.replace(/{(\w+)\s*\+\s*(\d+)}/g, (match, varName, num) => {
+                  const varValue = variables[varName];
+                  if (typeof varValue === 'number') {
+                    return String(varValue + Number(num));
+                  }
+                  return match;
+                });
+                result += content + '\n';
+                continue;
+              }
+            }
+
+            // Variable print
+            const varMatch = trimmedLine.match(/print\((\w+)\)/);
+            if (varMatch) {
+              const varName = varMatch[1];
+              if (variables[varName] !== undefined) {
+                result += variables[varName] + '\n';
+              } else {
+                throw new Error(`NameError: name '${varName}' is not defined`);
+              }
+              continue;
+            }
+
+            // Print with string concatenation
+            if (trimmedLine.includes(',')) {
+              const printArgs = trimmedLine.match(/print\((.*)\)/);
+              if (printArgs) {
+                const args = printArgs[1].split(',').map(arg => arg.trim());
+                let output = '';
+                for (const arg of args) {
+                  if (arg.startsWith('"') || arg.startsWith("'")) {
+                    output += arg.slice(1, -1) + ' ';
+                  } else if (variables[arg] !== undefined) {
+                    output += variables[arg] + ' ';
+                  } else {
+                    output += arg + ' ';
+                  }
+                }
+                result += output.trim() + '\n';
+              }
+            }
           }
           
           // Handle imports
           if (trimmedLine.startsWith('import ') || trimmedLine.startsWith('from ')) {
             result += `✓ Module imported: ${trimmedLine}\n`;
+          }
+
+          // Handle for loops (basic)
+          if (trimmedLine.startsWith('for ')) {
+            const forMatch = trimmedLine.match(/for\s+(\w+)\s+in\s+range\((\d+),?\s*(\d+)?,?\s*(-?\d+)?\)/);
+            if (forMatch) {
+              const [, varName, start, end, step] = forMatch;
+              const startNum = parseInt(start);
+              const endNum = end ? parseInt(end) : startNum;
+              const stepNum = step ? parseInt(step) : 1;
+              
+              const actualStart = end ? startNum : 0;
+              const actualEnd = end ? endNum : startNum;
+              
+              for (let i = actualStart; stepNum > 0 ? i < actualEnd : i > actualEnd; i += stepNum) {
+                variables[varName] = i;
+              }
+              result += `✓ Loop executed: ${trimmedLine}\n`;
+            }
+          }
+
+          // Check for undefined variables in expressions
+          const undefinedVarMatch = trimmedLine.match(/\b([a-zA-Z_]\w*)\b/g);
+          if (undefinedVarMatch && !trimmedLine.includes('=') && !trimmedLine.includes('print') && !trimmedLine.includes('import') && !trimmedLine.includes('for')) {
+            for (const varName of undefinedVarMatch) {
+              if (!['range', 'len', 'str', 'int', 'float', 'list', 'dict'].includes(varName) && variables[varName] === undefined) {
+                throw new Error(`NameError: name '${varName}' is not defined`);
+              }
+            }
           }
         }
         
@@ -72,7 +168,14 @@ const PythonSimulator = () => {
         });
         
       } catch (error) {
-        setOutput(`❌ Error: ${error}\n\nDon't worry, even the best coders debug in space! 🚀`);
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        setOutput(`❌ ${errorMessage}\n\nDon't worry, even the best coders debug in space! 🚀\n\nTip: Check for typos, missing parentheses, or undefined variables.`);
+        
+        toast({
+          title: "🚫 Execution Error",
+          description: "Found an issue in your code. Check the output for details!",
+          variant: "destructive"
+        });
       }
       
       setIsRunning(false);
